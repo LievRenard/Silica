@@ -71,6 +71,14 @@ dict<string, real> dict1 = ["Physics": 4.5, "Chemistry": 4, "Biology": 2];
 dict1.append(["Geology": 3]);
 ```
 
+**Range**
+
+Build by struct
+
+```
+range a = 1..10; //a is from 1, 2, 3, ..., 9 (excluding 10)
+```
+
 
 
 ### Control Statement
@@ -146,7 +154,20 @@ func<void> sayhello = &{print("Hello");};
 
 
 
-### Classes
+### Class and Struct
+
+**Struct**
+
+```
+struct [Name]: (
+	[type1] [member variable1],
+	... ) -> {	
+	[member function]
+	...
+}
+```
+
+**Class**
 
 ```
 class [Name]: (
