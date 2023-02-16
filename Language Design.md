@@ -64,11 +64,11 @@ list2.append(2); //list2 -> [2]
 list2.prepend(1); //list2 -> [1, 2]
 ```
 
-**Map**
+**Dictionary**
 
 ```
-map<string, real> dict = ["Physics": 4.5, "Chemistry": 4, "Biology": 2];
-dict.append(["Geology": 3]);
+dict<string, real> dict1 = ["Physics": 4.5, "Chemistry": 4, "Biology": 2];
+dict1.append(["Geology": 3]);
 ```
 
 
@@ -98,6 +98,16 @@ for(:i,[...]) << &{
 }
 ```
 
+**while statement**
+
+```
+//while: (bool, func) -> void
+
+while([condition]) << &{
+	...
+}
+```
+
 
 
 ### Functions
@@ -105,7 +115,7 @@ for(:i,[...]) << &{
 **Named function**
 
 ```
-[name]: ([type1] [parameter1], [type2] [parameter2], ...) -> (return type) {
+func [name]: ([type1] [parameter1], [type2] [parameter2], ...) -> (return type) {
 	...
 	//if return type is not void
 	return ...
@@ -113,7 +123,7 @@ for(:i,[...]) << &{
 
 //example: addition of 2 integers
 
-add: (int a, int b) -> void {
+func add: (int a, int b) -> void {
 	return a+b;
 }
 ```
@@ -128,9 +138,35 @@ func<type1, type2, ..., returntype> [variable] = &{...}
 //example: addition of 2 integers
 func<int, int, int> add = (a, b) -> {return a+b;};
 //or
-func<int, int, int> add &{return &1+&2;};
+func<int, int, int> add = &{return &1+&2;};
 
 //It can be available to use only &{...} in case of no return value and parameter function
 func<void> sayhello = &{print("Hello");};
+```
+
+
+
+### Classes
+
+```
+class [Name]: (
+	[type1] [member variable1],
+	... ) -> {	
+	[member function]
+	...
+}
+
+//example: 2D cartesian point class with distance from origin function
+class Point: (
+	real x,
+	real y ) -> {
+	
+	func<real, real, void> Point = &{
+		self.x = &1;
+    self.y = &2;
+  };
+  
+  func<Point, real> norm = &{ return sqrt(&1.x^2+&1.y^2); };
+}
 ```
 
